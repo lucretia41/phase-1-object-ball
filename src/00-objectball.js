@@ -174,9 +174,94 @@ function teamNames() {
 console.log(teamNames())
 
 //function playersNumbers(){
-   // return players.number
 
-//}
+
+const playersNumbers = [];
+function playerNumbers(teamArg) {
+    for (let gameKey in game) {
+        let teamObj = game[gameKey]
+        for (let teamKey in teamObj) {
+            if (teamArg === teamObj[teamKey]) {
+                let playerObj = teamObj.players;
+                for (let nameKey in playerObj) {
+                    let player = nameKey;
+                    playersNumbers.push(playerObj[player].number);
+                }
+            }
+        }
+    }
+}
+playerNumbers('Charlotte Hornets');
+console.log(playersNumbers);
+
+function playerStats(name) {
+    return players[name]
+}
+console.log(playerStats("Reggie Evans"))
+
+function bigShoeRebounds() {
+    const biggestFeet = { shoe: 0 }
+    for (const player in players) {
+        if (players[player].shoe > biggestFeet.shoe) {
+            biggestFeet.shoe = players[player].shoe
+            biggestFeet.playerName = player
+        }
+
+    }
+    console.log(biggestFeet.playerName)
+    return players[biggestFeet.playerName].rebounds
+}
+console.log(bigShoeRebounds())
+
+// Which player has the most points? Call the function mostPointsScored.
+// Which team has the most points? Call the function winningTeam.
+// Which player has the longest name? Call the function playerWithLongestName.
+
+function mostPointsScored() {
+    const topPlayer = { points: 0 }
+    for (const player in players) {
+        console.log(player)
+        console.log(topPlayer)
+        if (parseInt(players[player].points) > parseInt(topPlayer.points)) {
+            topPlayer.points = players[player].points
+            topPlayer.playerName = player
+        }
+    }
+    console.log(topPlayer)
+    return topPlayer.playerName
+}
+console.log(mostPointsScored())
+
+function winningTeam() {
+    const teamPoints = { totalPoints: 0 }
+    for (const team of teams) {
+        let points = 0
+        console.log(team)
+        for (const player in team.players) {
+            console.log(player)
+            points += parseInt(team.players[player].points)
+        } if (points > teamPoints.totalPoints) {
+            teamPoints.totalPoints = points
+            teamPoints.teamName = team.teamName
+        }
+    }
+    return teamPoints.teamName
+}
+console.log(winningTeam())
+
+function playerWithLongestName() {
+    const longestPlayer = { nameLength: 0 }
+    for (const player in players) {
+        if (player.length > longestPlayer.nameLength) {
+            longestPlayer.nameLength = player.length
+            longestPlayer.name = player
+        }
+    }
+    return longestPlayer.name
+}
+console.log(playerWithLongestName())
+
+// thanks to brian at den3 for helping me understand how things are working
 
 
 
