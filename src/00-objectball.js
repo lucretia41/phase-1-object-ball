@@ -201,7 +201,7 @@ console.log(playerStats("Reggie Evans"))
 
 function bigShoeRebounds() {
     const biggestFeet = { shoe: 0 }
-    for (const player in players) {
+    for (let player in players) {
         if (players[player].shoe > biggestFeet.shoe) {
             biggestFeet.shoe = players[player].shoe
             biggestFeet.playerName = player
@@ -219,7 +219,7 @@ console.log(bigShoeRebounds())
 
 function mostPointsScored() {
     const topPlayer = { points: 0 }
-    for (const player in players) {
+    for (let player in players) {
         console.log(player)
         console.log(topPlayer)
         if (parseInt(players[player].points) > parseInt(topPlayer.points)) {
@@ -234,10 +234,10 @@ console.log(mostPointsScored())
 
 function winningTeam() {
     const teamPoints = { totalPoints: 0 }
-    for (const team of teams) {
+    for (let team of teams) {
         let points = 0
         console.log(team)
-        for (const player in team.players) {
+        for (let player in team.players) {
             console.log(player)
             points += parseInt(team.players[player].points)
         } if (points > teamPoints.totalPoints) {
@@ -251,7 +251,7 @@ console.log(winningTeam())
 
 function playerWithLongestName() {
     const longestPlayer = { nameLength: 0 }
-    for (const player in players) {
+    for (let player in players) {
         if (player.length > longestPlayer.nameLength) {
             longestPlayer.nameLength = player.length
             longestPlayer.name = player
